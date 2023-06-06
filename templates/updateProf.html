@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% block title %} Update Profile {% endblock %}
+{% block body %}
+<div class = 'container' >
+
+  <form method="POST" enctype="multipart/form-data">
+    {% if messages %}
+      <ul class="messages">
+          {% for message in messages %}
+            {{ message }}
+          {% endfor %}
+      </ul>
+    {% endif %}
+    {% csrf_token %}
+    <div class="mb-3">
+      <label  class="form-label">Name</label>
+      <input type="text" class="form-control" value="{{prof.name}}" aria-describedby="emailHelp" name="name">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">email</label>
+      <input type="email" class="form-control" value="{{prof.email}}" aria-describedby="emailHelp" name="email">
+    </div>
+    <div class="mb-3">
+      <label  class="form-label">age</label>
+      <input type="number" class="form-control" value="{{prof.age}}" aria-describedby="emailHelp" name="age">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlSelect1">gender</label>
+        <select class="form-control"  id="exampleFormControlSelect1" name ="gender">
+          <option>Male</option>
+          <option>Female</option>
+          <option>Others</option>
+        </select>
+    </div>
+      <br>
+    <div class="mb-3">
+      <label class="form-label">phone</label>
+      <input type="tel" class="form-control" value="{{prof.phone_number}}" aria-describedby="emailHelp" name="phone">
+    </div>
+
+    <div class="mb-3">
+      <label  class="form-label">address</label>
+      <input type="text" class="form-control" value="{{prof.address}}" name="address">
+    </div>
+      <div class="mb-3">
+      <label  class="form-label">Birth Day</label>
+      <input type="text" class="form-control" value="{{prof.Birth_day}}"  name="birth_day">
+    </div>
+    <img style=" height:350px; width:250px; margin: 0 auto; display: block;" src="{{prof.image.url}}" alt="">
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Example file input</label>
+        <input type="file" class="form-control-file" id="exampleFormControlFile1" name = 'img'>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+  </form>
+</div>
+{% endblock %}
+
+
+

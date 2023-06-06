@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %} Log In {% endblock %}
+{% block body %}
+<div class="container">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">Username</label>
+            <input type="text" class="form-control" aria-describedby="emailHelp" name="username">
+
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="pass">
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+{% endblock %}
